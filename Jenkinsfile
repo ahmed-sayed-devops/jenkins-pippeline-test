@@ -1,19 +1,21 @@
-node{
-    stage('Build') {
-        try {
-            sh'echo "Building the project..."'
+pipeline{
+    agent any
+    stages{
+        stage('Build'){
+            steps{
+                script{
+                    echo "Building the project..."
+                    // Add your build commands here
+                }
+            }
         }
-        catch (Exception e) {
-            echo "Build failed"
-            throw e
+        stage('Test'){
+            steps{
+                script{
+                    echo "Running tests..."
+                    // Add your test commands here
+                }
+            }
         }
     }
-    stage('Test') {
-        if (env.BRANCH_NAME == 'feature') {
-            sh'echo "Running tests for feature branch..."'           
-        } else {
-            sh'echo "Running tests for non-feature branch..."'
-        }
-    }
-
 }
