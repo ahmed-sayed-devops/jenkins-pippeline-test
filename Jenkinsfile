@@ -7,7 +7,7 @@ pipeline{
             steps{
                 script{
                     echo "Building the project..."
-                    mvn clean package
+                    sh 'mvn clean package'
                     // Add your build commands here
                 }
             }
